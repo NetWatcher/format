@@ -6,7 +6,7 @@ import (
 )
 
 func TestReformattingSingleNamedPattern(t *testing.T) {
-	pat := "%<name_me>x"
+	pat := "%(name_me)x"
 
 	f, n := reformat(pat)
 
@@ -20,7 +20,7 @@ func TestReformattingSingleNamedPattern(t *testing.T) {
 }
 
 func TestReformattingMultipleNamedPattern(t *testing.T) {
-	pat := "%<name_me>x and %<another_name>v"
+	pat := "%(name_me)x and %(another_name)v"
 
 	f, n := reformat(pat)
 
@@ -34,7 +34,7 @@ func TestReformattingMultipleNamedPattern(t *testing.T) {
 }
 
 func TestReformattingRepeatedNamedPattern(t *testing.T) {
-	pat := "%<name_me>x and %<another_name>v and %<name_me>v"
+	pat := "%(name_me)x and %(another_name)v and %(name_me)v"
 
 	f, n := reformat(pat)
 
@@ -48,7 +48,7 @@ func TestReformattingRepeatedNamedPattern(t *testing.T) {
 }
 
 func TestSprintf(t *testing.T) {
-	pat := "%<brother>s loves %<sister>s. %<sister>s also loves %<brother>s."
+	pat := "%(brother)s loves %(sister)s. %(sister)s also loves %(brother)s."
 	params := map[string]interface{}{
 		"sister":  "Susan",
 		"brother": "Louis",
@@ -62,7 +62,7 @@ func TestSprintf(t *testing.T) {
 }
 
 func TestSprintfFloatsWithPrecision(t *testing.T) {
-	pat := "%<float>f / %<floatprecision>.1f / %<long>g / %<longprecision>.3g"
+	pat := "%(float)f / %(floatprecision).1f / %(long)g / %(longprecision).3g"
 	params := map[string]interface{}{
 		"float": 5.034560,
 		"floatprecision": 5.03456,
